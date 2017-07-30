@@ -61,7 +61,6 @@ RSpec.describe Parking, type: :model do
         expect( @parking.amount ).to eq(400)
       end
     end
-  end
 
   context "short-term" do
 
@@ -101,4 +100,5 @@ RSpec.describe Parking, type: :model do
      expect( @parking.amount ).to eq(300)
    end
  end
+end
 end
