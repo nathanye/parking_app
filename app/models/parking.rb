@@ -26,14 +26,10 @@ class Parking < ApplicationRecord
     if self.amount.blank? && self.start_at.present? && self.end_at.present?
       total = 0
       if duration <= 60
-        total = 200
+        self.amount = 200
       else
-        total += 200
-        left_duration = duration - 60
-        total += ( left_duration.to_f / 30 ).ceil * 100
+        self.amount = 200 + ((duration - 60).to_f / 30).ceil * 100  
       end
-
-      self.amount = total
     end
   end
 end
