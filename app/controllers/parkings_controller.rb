@@ -10,16 +10,14 @@ class ParkingsController < ApplicationController
 
   def create
     @parking = Parking.new( :start_at => Time.now )
-    @parking.save!
 
     # 有登入的话，根据用户选的费率。没有登入的话，指定是 guest 费率
     if current_user
       @parking.parking_type = params[:parking][:parking_type]
       @parking.user = current_user
     else
-      @parking.parking_type = "guest"  
+      @parking.parking_type = "guest"
     end
-    redirect_to parking_path(@parking)
   end
 
   # Step3: 如果还没结束，显示结束停车的表单
